@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Scraping Results</title>
+</head>
+<body>
+<h1>Web Scraping Results</h1>
+
+{% if message %}
+<p>{{ message }}</p>
+{% else %}
+<table border="1">
+<thead>
+<tr>
+<th>Title</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+{% for item in data %}
+<tr>
+<td>{{ item[0] }}</td>
+<td>{{ item[1] }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<nav>
+{% for page in range(1, total_pages + 1) %}
+<a href="/results?page={{ page }}">Page {{ page }}</a>
+{% endfor %}
+</nav>
+{% endif %}
+</body>
+</html>
+
